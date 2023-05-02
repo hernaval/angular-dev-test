@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {SubscriptionComponent} from "./subscription.component";
 
 
 const routes: Routes = [
   {
-    path: "subscription",
-    loadChildren: () => import("./subscription/subscription.module").then(mo => mo.SubscriptionModule)
+    path: "",
+    component: SubscriptionComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class SubscriptionRoutingModule { }

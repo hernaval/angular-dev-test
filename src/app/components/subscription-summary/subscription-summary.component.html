@@ -1,0 +1,25 @@
+<div class="h-full">
+  <ng-container >
+    <div class="card shadow-lg w-full mx-4">
+      <div class="card-body">
+        <h2 class="card-title">Resume de votre commande</h2>
+        <div class="border-b border-gray-200 py-4">
+          <div class="grid grid-cols-2 my-4">
+            <span class="">Abonnement  </span>
+            <span class="text-right font-bold rounded-badge badge-accent">{{ order.duration }} mois</span>
+          </div>
+          <div class="grid grid-cols-2">
+            <span >Stockage </span>
+            <span class="text-right font-bold rounded-badge badge-accent">{{ order.storage }} GB</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 py-4" >
+          <span class="font-bold">Total</span>
+          <span class="text-xl text-right font-bold">$ {{ totalPrice | async }}</span>
+        </div>
+
+        <button class="btn btn-primary w-full"  [disabled]="checkoutDisabled">Valider</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

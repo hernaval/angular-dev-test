@@ -1,0 +1,21 @@
+<div [ngClass]="{'card shadow-md hover:shadow-lg scale-75 my-5': true, 'border-[5px] border-violet-500 scale-[1]': active}" >
+  <div class="card-body items-center">
+    Icon
+    <h2 class="card-title">Basic {{ item.duration_months }} mois</h2>
+    <span class="text-sm text-gray-500">Lorem ipsum</span>
+    <div class="avatar placeholder">
+      <div class="bg-neutral-focus text-neutral-content rounded-full w-[150px]">
+        <span class="text-3xl">${{ item.price_usd_per_gb }} <span class="text-sm">/ GB</span>   </span>
+      </div>
+    </div>
+
+    <ul class="list-disc list-inside my-5">
+      <li>Pay as you go Storage</li>
+      <li>Unlimited Bandwidth</li>
+      <li>10 Domains</li>
+      <li>24/7 Support</li>
+    </ul>
+
+    <button class="btn btn-primary mt-4 w-full" (click)="choose(item.duration_months)">Choisir</button>
+  </div>
+</div>

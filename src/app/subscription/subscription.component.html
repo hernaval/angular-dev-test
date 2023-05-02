@@ -1,0 +1,92 @@
+<div class="w-full h-full px-20 py-16"  *ngIf="(subscriptionOrder$ | async) as order">
+  <div class="grid xl:grid-cols-2/3 grid-cols-1 gap-4 h-full" >
+    <!-- steps -->
+    <div class="h-full flex flex-col justify-between">
+      <app-subscription-steps [currentStep]="currentStep" class="mx-5"></app-subscription-steps>
+
+      <div >
+        <ng-container *ngIf="currentStep === 0" >
+          <h3 class="text-3xl ">Choisir votre plan d'abonnement</h3>
+          <div *ngIf="(subscriptionPlans$ | async) as subscriptionList; else loading">
+            <div class="flex flex-col justify-center items-center m-5">
+              <h3 class="text-2xl font-bold mb-3">Accompte ? <span *ngIf="order.upfrontPayment" class="text-error text-md font-600">-10% sur la totalite</span> </h3>
+              <div>
+                <input type="checkbox" class="toggle toggle-lg"  (change)="changeSubscriptionUpfrontPayment(order.upfrontPayment)" />
+              </div>
+
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-3 justify-center gap-8 ">
+              <app-subscription-card (onChooseEvent)="chooseSubscriptionDuration(subscription.duration_months)" [active]="order.duration === subscription.duration_months" [item]="subscription"  *ngFor="let subscription of subscriptionList"></app-subscription-card>
+            </div>
+
+            <div class="my-10">
+              <h3 class="text-3xl my-5">Ajuster la taille de stockage qui vous convient</h3>
+              <select class="select select-success w-full max-w-xs" (change)="changeSubscriptionStorage($event)">
+                <option value="5"> 5 GB </option>
+                <option value="10"> 10 GB </option>
+                <option value="50"> 50 GB </option>
+              </select>
+            </div>
+
+          </div>
+
+        </ng-container>
+
+        <ng-container *ngIf="currentStep === 1">
+          <div class="card shadow-lg  mx-auto w-full md:w-1/2">
+            <div class="card-body">
+              <h2 class="card-title">Information de paiement</h2>
+              <form [formGroup]="paymentForm" class="my-10">
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Numero</span>
+                  </label>
+                  <input type="text" placeholder="4242 4242 4242 4242" formControlName="number" class="input input-bordered">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Date d'expiration</span>
+                    </label>
+                    <input type="date" placeholder="MM/YY" class="input input-bordered" formControlName="expirationDate">
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">CVV</span>
+                    </label>
+                    <input type="text" placeholder="123" class="input input-bordered" formControlName="cvv">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </ng-container>
+
+
+        <ng-container *ngIf="currentStep === 2">
+          <app-subscription-term (checkerEvent)="toogleChecker($event)"></app-subscription-term>
+        </ng-container>
+
+
+      </div>
+
+      <!-- BACK & NEXT STEP -->
+
+      <app-step-control (onAction)="updateStep($event)" [backDisabled]="currentStep === 0" [nextDisabled]="(currentStep === 2) || (currentStep === 1 && paymentForm.invalid)"></app-step-control>
+    </div>
+
+    <!-- summury -->
+    <app-subscription-summary [order]="order" [checkoutDisabled]="(currentStep !== 2 || !termChecked) " [totalPrice]="totalPrice"></app-subscription-summary>
+  </div>
+
+
+
+
+</div>
+
+<ng-template #loading>
+    <span>
+     Loading data...
+    </span>
+</ng-template>

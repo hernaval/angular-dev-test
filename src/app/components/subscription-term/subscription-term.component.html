@@ -1,0 +1,12 @@
+<div class="h-full bg-white p-6 shadow-md rounded-md terms-container my-16">
+  <h1 class="text-3xl font-bold mb-10">Termes et Conditions d'abonnement</h1>
+  <div class="overflow-y-scroll max-h-[500px]">
+    <!-- Add your terms & agreement text here -->
+    <p *ngFor="let i of [].constructor(20)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras porttitor metus justo, ut fringilla nibh pretium a. Integer in tellus eu nisl consequat facilisis. Etiam at malesuada sapien, nec ullamcorper velit...</p>
+  </div>
+
+  <div class="flex my-5">
+      <input type="checkbox" id="terms"  class="checkbox checkbox-primary" [checked]="isChecked" (change)="toogleTerms()" value="true" />
+      <label class="ml-3" for="terms">J'accepte les termes & conditions</label>
+  </div>
+</div>
