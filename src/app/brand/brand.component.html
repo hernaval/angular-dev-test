@@ -1,0 +1,82 @@
+<div class="w-full h-full px-20 py-16">
+  <h3 class="text-gray">All Requests</h3>
+
+  <div class="flex flex-row justify-between">
+    <div class="flex flex-row items-center gap-16">
+      <h3 class="text-gray">Filter </h3>
+
+      <div class="form-control">
+        <input type="text" placeholder=""  class="input input-bordered">
+      </div>
+
+      <select class="select select-success w-full"  >
+        <option>Brand</option>
+        <option value="5"> 5 GB </option>
+        <option value="10"> 10 GB </option>
+        <option value="50"> 50 GB </option>
+      </select>
+
+    </div>
+
+    <button class="btn ">Filter</button>
+  </div>
+
+
+    <div class="overflow-x-auto">
+      <table class="table-auto border-separate border-spacing-y-5 w-full" *ngIf="(campain$ | async ) as campainList; else loading">
+        <thead class="bg-transparent text-left">
+        <tr>
+          <th class="">Status</th>
+          <th class="">Name</th>
+          <th class="">Type</th>
+          <th class="">Brand</th>
+          <th class="">Submission</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="bg-blue-100 " *ngFor="let campain of campainList">
+          <td class="px-4 py-4">
+              <app-pending-icon *ngIf="['TO_REVIEW', 'TO_MODIFY', 'SUBMITTED'].includes(campain.requestStatus.name)"></app-pending-icon>
+              <app-accepted-icon *ngIf="['VALIDATED'].includes(campain.requestStatus.name)" ></app-accepted-icon>
+              <app-rejected-icon *ngIf="['REJECTED'].includes(campain.requestStatus.name)" ></app-rejected-icon>
+              <app-draft-icon *ngIf="['DRAFT'].includes(campain.requestStatus.name)" ></app-draft-icon>
+          </td>
+          <td class="">{{ campain.campaignName }}</td>
+          <td [ngClass]="{'badge  ': true, 'badge-secondary': campain.advice}">{{ campain.advice ? "Advice" : "Request" }}</td>
+          <td class="">{{ campain.brand.name }}</td>
+          <td class="text-gray-500">{{ campain.submittedDate }}</td>
+          <td class="">
+            <app-arrow-right-icon></app-arrow-right-icon>
+          </td>
+
+        </tr>
+        <tr class="bg-blue-100 rounded-xl overflow-hidden " >
+          <td class="px-2 py-8">
+            <app-accepted-icon></app-accepted-icon>
+          </td>
+          <td class="">Data 1</td>
+          <td class="">Data 1</td>
+          <td class="">Data 1</td>
+          <td class="">Data 1</td>
+
+        </tr>
+        <tr class="bg-blue-100 rounded-xl overflow-hidden " >
+          <td class="px-2 py-8">
+            <app-rejected-icon></app-rejected-icon>
+          </td>
+          <td class="">Data 1</td>
+          <td class="">Data 1</td>
+          <td class="">Data 1</td>
+          <td class="">Data 1</td>
+
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+</div>
+
+<ng-template #loading>
+  loading...
+</ng-template>
