@@ -1,0 +1,46 @@
+<div class="w-full h-full flex flex-col px-40 py-16" *ngIf="(campain$ | async ) as campain">
+
+  <div class="form-control flex flex-row justify-between gap-8 mb-48">
+    <div>
+      <label class="label">
+        <span class="">Brand*</span>
+      </label>
+    </div>
+
+    <div class="w-full">
+      <select formControlName="brandId" class="select  w-full bg-gray-100"  *ngIf="(brand$ | async) as brandList">
+        <option *ngFor="let brand of brandList" [value]="brand.brandId" [selected]="campain.brand.brandId == brand.brandId"> {{ brand.name }} </option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="form-control mb-20">
+    <label class="label">
+      <span class="label-text">Campaign name *</span>
+    </label>
+    <input type="text" [value]="campain.campaignName"  formControlName="number" class="input input-bordered bg-gray-100">
+  </div>
+
+  <div class="mb-20">
+    <label class="label">
+      <span class="label-text">Media*</span>
+    </label>
+
+    <div class="grid grid-cols-2 grid-rows-6 gap-4">
+      <div class="flex items-center " *ngFor="let media of campain.media">
+        <input type="checkbox"  class="checkbox" />
+        <label class="ml-2">{{ media.value }}</label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-control">
+    <label class="label">
+      <span class="label-text">Dealine for decision *</span>
+    </label>
+    <input type="date"  [value]="campain.decisionDeadline" class="input input-bordered bg-gray-100">
+  </div>
+
+</div>

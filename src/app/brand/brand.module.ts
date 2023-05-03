@@ -7,7 +7,8 @@ import {AcceptedIconComponent} from "../components/icons/accepted-icon/accepted-
 import {ArrowRightIconComponent} from "../components/icons/arrow-right-icon/arrow-right-icon.component";
 import { RejectedIconComponent } from '../components/icons/rejected-icon/rejected-icon.component';
 import { DraftIconComponent } from '../components/icons/draft-icon/draft-icon.component';
-
+import {ReactiveFormsModule} from "@angular/forms";
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
@@ -17,11 +18,13 @@ import { DraftIconComponent } from '../components/icons/draft-icon/draft-icon.co
     AcceptedIconComponent,
     ArrowRightIconComponent,
     RejectedIconComponent,
-    DraftIconComponent
+    DraftIconComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,
-    BrandRoutingModule
+    BrandRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class BrandModule { }

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable, of} from "rxjs";
-import {Campain} from "./core/model";
+import {filter, map, Observable, of} from "rxjs";
+import {Brand, Campain} from "./core/model";
 import {BrandService} from "./services/brand.service";
 import {CampainService} from "./services/campain.service";
+import {FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-brand',
@@ -11,17 +12,30 @@ import {CampainService} from "./services/campain.service";
 })
 export class BrandComponent implements OnInit{
   campain$: Observable<Campain[]> = of([])
-
-  constructor(private brandService: BrandService, private campainService: CampainService) {
+  brand$: Observable<Brand[]> = of([])
+  searchForm!: FormGroup
+  constructor(private brandService: BrandService, private campainService: CampainService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
-    this.loadCampain()
+    this.loadCampainAndBrand()
+
+    this.searchForm = this.fb.group({
+      'name': [''],
+      'brandId': ['']
+    })
   }
 
-  loadCampain(): void {
+  loadCampainAndBrand(): void {
     this.campain$ = this.campainService.getAll()
+    this.brand$ = this.brandService.getAll()
   }
 
 
+  applySearchAndFilter() {
+    if(this.searchForm.valid) {
+      const {name, brandId} = this.searchForm.value
+      this.campain$ = this.campainService.filter(name, Number(brandId))
+    }
+  }
 }
