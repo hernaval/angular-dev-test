@@ -20,6 +20,17 @@ To start karma test
 - visit [http://localhost:4200/subscription] for Test 1
 - visit [http://localhost:4200/brand] for Test 2
 
+## Screenshots
+### Test 1
+
+![Step 1 - Choix abonnement](./screenshoots/step1.png)
+![Step 2 - Information de paiement](./screenshoots/step2.png)
+![Step 3 - Confirmation](./screenshoots/step3.png)
+
+### Test 2
+![Liste](./screenshoots/step4.png)
+![Edit](./screenshoots/step5.png)
+
 > Don't worry there is a basic navigation inside the app
 
 ## Testing

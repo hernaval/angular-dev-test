@@ -8,8 +8,8 @@
     </div>
 
     <div class="w-full">
-      <select formControlName="brandId" class="select  w-full bg-gray-100"  *ngIf="(brand$ | async) as brandList">
-        <option *ngFor="let brand of brandList" [value]="brand.brandId" [selected]="campain.brand.brandId == brand.brandId"> {{ brand.name }} </option>
+      <select  class="select  w-full bg-gray-100"  *ngIf="(brand$ | async) as brandList" >
+        <option *ngFor="let brand of brandList" [value]="brand.brandId" [selected]="brand.brandId == campain.brand.brandId ? 'selected' : '' "> {{ brand.name }} </option>
       </select>
     </div>
 
@@ -29,8 +29,8 @@
 
     <div class="grid grid-cols-2 grid-rows-6 gap-4">
       <div class="flex items-center " *ngFor="let media of campain.media">
-        <input type="checkbox"  class="checkbox" />
-        <label class="ml-2">{{ media.value }}</label>
+        <input type="checkbox" [id]="media.mediaId"  class="checkbox" />
+        <label [htmlFor]="media.mediaId" class="ml-2">{{ media.value }}</label>
       </div>
     </div>
   </div>
