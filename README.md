@@ -1,27 +1,34 @@
-# DevTest
+# DevTest Collaboration Capital
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
+This project is the result of work from the two Frontend Angular tests:
+- [Test 1](https://docs.google.com/document/d/1msBhjmLZMrNotEvalHpyyVyR3AyJfRV3lUu7IrnVgR0/edit?usp=sharing&urp=gmail_link)
+- [Test 2](https://docs.google.com/document/d/1Z-jpjRguZe0_UgybiLgKB_WXKQNmaDT2EO57A_s7SAY/edit)
 
-## Development server
+## Installation
+**yarn** is the prefered package manager used for this project but you can use your favorite one (npm, pnpm, etc)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+*To install required dependencies*
+`yarn install`
 
-## Code scaffolding
+*To start the server*
+`yarn start` then visit [http://localhost:4200]
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To start karma test
+`yarn test`
 
-## Build
+## Try-On
+- visit [http://localhost:4200/subscription] for Test 1
+- visit [http://localhost:4200/brand] for Test 2
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+> Don't worry there is a basic navigation inside the app
 
-## Running unit tests
+## Testing
+I write some component testing, service testing. All of them are green (passed)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![Test result](./screenshoots/karma.png)
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Technologies
+- Angular 15 (latest)
+- Rxjs
+- [Tailwindcss](https://tailwindcss.com)
+- [Daisyui](https://daisyui.com)

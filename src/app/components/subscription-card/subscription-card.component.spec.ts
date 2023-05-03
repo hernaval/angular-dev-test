@@ -14,6 +14,10 @@ describe('SubscriptionCardComponent', () => {
 
     fixture = TestBed.createComponent(SubscriptionCardComponent);
     component = fixture.componentInstance;
+    component.item = {
+      duration_months: 3,
+      price_usd_per_gb: 3
+    }
     fixture.detectChanges();
   });
 

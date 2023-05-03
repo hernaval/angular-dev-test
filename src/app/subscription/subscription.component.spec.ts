@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SubscriptionComponent } from './subscription.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {StepControlComponent} from "../components/step-control/step-control.component";
-import {By} from "@angular/platform-browser";
+import {BrowserModule, By} from "@angular/platform-browser";
 import {SubscriptionStepsComponent} from "../components/subscription-steps/subscription-steps.component";
 import {SubscriptionSummaryComponent} from "../components/subscription-summary/subscription-summary.component";
 import {SubscriptionTermComponent} from "../components/subscription-term/subscription-term.component";
@@ -18,7 +18,7 @@ describe('SubscriptionComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SubscriptionComponent, SubscriptionStepsComponent, StepControlComponent, SubscriptionSummaryComponent, SubscriptionTermComponent],
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, BrowserModule],
     })
     .compileComponents();
 

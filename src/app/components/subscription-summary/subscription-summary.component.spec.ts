@@ -14,6 +14,9 @@ describe('SubscriptionSummaryComponent', () => {
 
     fixture = TestBed.createComponent(SubscriptionSummaryComponent);
     component = fixture.componentInstance;
+    component.order = {
+      duration: 0, storage: 0, upfrontPayment: false
+    }
     fixture.detectChanges();
   });
 
