@@ -19,6 +19,7 @@ To start karma test
 ## Try-On
 - visit [http://localhost:4200/subscription] for Test 1
 - visit [http://localhost:4200/brand] for Test 2
+- visit [Live Demo 🚀](https://dev-test-angular.onrender.com])
 
 ## Screenshots
 ### Test 1
